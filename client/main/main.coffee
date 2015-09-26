@@ -1,10 +1,13 @@
 Template.Main.onCreated ->
   @throwHeight = new ReactiveVar 225
   @v0 = new ReactiveVar 0
+  @throwDistance = new ReactiveVar -25
 
 Template.Main.helpers
   throwHeight: ->
     (Template.instance().throwHeight.get() + 25) / 5
+  throwDistance: ->
+    (Template.instance().throwDistance.get() + 25) / 10
 
 Template.Main.events
   'change #height-range-input': (event, tmpl) ->
@@ -23,4 +26,5 @@ Template.Main.events
       ball.css('bottom', positionY -= 0.5)
       if overlaps ball[0], ruler[0]
         Meteor.clearInterval ballFly
+        tmpl.throwDistance.set positionX
     , 1

@@ -1,6 +1,6 @@
 Template.Main.onCreated ->
   @throwHeight = new ReactiveVar 225
-  @v0 = new ReactiveVar 0
+  @v0 = new ReactiveVar 1
   @throwDistance = new ReactiveVar -25
 
 Template.Main.helpers

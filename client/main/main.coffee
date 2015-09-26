@@ -1,22 +1,23 @@
 Template.Main.onCreated ->
-  @throwHeight = new ReactiveVar 0
+  @throwHeight = new ReactiveVar 225
 
 Template.Main.helpers
   throwHeight: ->
-    Template.instance().throwHeight.get()
+    (Template.instance().throwHeight.get() + 25) / 5
 
 Template.Main.events
   'change #height-range-input': (event, tmpl) ->
-    tmpl.throwHeight.set tmpl.$(event.target).val()
-    tmpl.$('#ball').css 'bottom', (tmpl.throwHeight.get() * 5 - 25) + 'px'
+    tmpl.throwHeight.set (tmpl.$(event.target).val() * 5 - 25)
+    tmpl.$('#ball').css 'bottom', tmpl.throwHeight.get() + 'px'
+  'click #throw': (event, tmpl) ->
+    ball = tmpl.$('#ball')
+    positionX = 0
+    positionY = tmpl.throwHeight.get()
+    Meteor.setInterval ->
+      ball.css('right', positionX++)
+      if positionX % 3 is 0
+        ball.css('bottom', positionY--)
+    , 10
 
 
 Template.Main.onRendered ->
-  ball = @$('#ball')
-  positionX = 0
-  positionY = @throwHeight.get()
-#  Meteor.setInterval ->
-#    ball.css('right', positionX++)
-#    if positionX % 3 is 0
-#      ball.css('top', positionY++)
-#  , 10

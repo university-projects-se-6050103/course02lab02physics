@@ -11,13 +11,13 @@ Template.Main.events
     tmpl.$('#ball').css 'bottom', tmpl.throwHeight.get() + 'px'
   'click #throw': (event, tmpl) ->
     ball = tmpl.$('#ball')
+    ruler = tmpl.$('#ruler')
     positionX = 0
     positionY = tmpl.throwHeight.get()
-    Meteor.setInterval ->
+    ballFly = Meteor.setInterval ->
       ball.css('right', positionX++)
       if positionX % 3 is 0
         ball.css('bottom', positionY--)
-    , 10
-
-
-Template.Main.onRendered ->
+      if overlaps ball[0], ruler[0]
+        Meteor.clearInterval ballFly
+    , 1

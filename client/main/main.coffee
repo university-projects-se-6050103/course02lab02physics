@@ -21,10 +21,13 @@ Template.Main.events
     positionX = 0
     positionY = tmpl.throwHeight.get()
     v0 = tmpl.v0.get()
+    h = tmpl.throwHeight.get()
+    s = (v0 * Math.sqrt((2 * (h * 0.01) / 9.8)) / 18) * 0.01
+    step = 0
     ballFly = Meteor.setInterval ->
-      ball.css('right', positionX += v0)
-      ball.css('bottom', positionY -= 0.5)
+      ball.css('right', positionX += v0 * 2)
+      ball.css('bottom', positionY -= Math.sqrt(step++))
       if overlaps ball[0], ruler[0]
         Meteor.clearInterval ballFly
-        tmpl.throwDistance.set positionX
+        tmpl.throwDistance.set s
     , 1

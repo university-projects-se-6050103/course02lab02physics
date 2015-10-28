@@ -2,6 +2,8 @@ Template.Main.onCreated ->
   @throwHeight = new ReactiveVar 225
   @v0 = new ReactiveVar 1
   @throwDistance = new ReactiveVar -25
+  @ballFlySound = new Audio('ball-fly-sound.ogg')
+  @ballOverlapSound = new Audio('boom.ogg')
 
 Template.Main.helpers
   throwHeight: ->
@@ -17,6 +19,8 @@ Template.Main.events
   'change #v0': (event, tmpl) ->
     tmpl.v0.set parseFloat tmpl.$(event.target).val()
   'click #throw': (event, tmpl) ->
+    tmpl.ballFlySound.play()
+
     ball = tmpl.$('#ball')
     ruler = tmpl.$('#ruler')
     positionX = 0
@@ -29,6 +33,9 @@ Template.Main.events
       ball.css('right', positionX += v0 * 2)
       ball.css('bottom', positionY -= Math.sqrt(step++))
       if overlaps ball[0], ruler[0]
+        tmpl.ballFlySound.pause()
+        tmpl.ballOverlapSound.play()
+        tmpl.ballFlySound = new Audio('ball-fly-sound.ogg')
         Meteor.clearInterval ballFly
         tmpl.throwDistance.set s
     , 30

@@ -9,7 +9,7 @@ Template.Main.helpers
   throwHeight: ->
     (Template.instance().throwHeight.get() + 25) / 5
   throwDistance: ->
-    (Template.instance().throwDistance.get() + 25) / 10
+    ((Template.instance().throwDistance.get() + 25) / 10).toFixed(2)
 
 Template.Main.events
   'change #height-range-input': (event, tmpl) ->

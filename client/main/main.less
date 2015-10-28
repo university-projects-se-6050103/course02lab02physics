@@ -7,17 +7,28 @@ input[type=range][orient=vertical] {
 }
 
 #ruler {
-  border-bottom: 1px solid black;
+  background: url('/ruler.jpg');
+  height: 71px;
+  margin-bottom: -71px;
+}
+
+#result {
+  background: white;
+  padding: 5px 10px;
+  font-weight: bold;
+  border: 2px solid red;
+  border-radius: 5px;
 }
 
 #canvas {
   height: 500px;
 
   #ball {
-    background-color: #4f0007;
+    background: url('/ball.png');
+    background-size: 50px 50px;
+    background-color: #454547;
     width: 50px;
     height: 50px;
-    border: 1px solid black;
     border-radius: 50%;
     position: absolute;
     right: 0;
@@ -32,4 +43,15 @@ input[type=range][orient=vertical] {
 #v0 {
   width: 30px;
   margin: 15px 0;
+}
+
+body {
+  background: url('http://www.cathedral-school.com/IMG/Physics-Lab---3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  #body-wrapper {
+    background: rgba(0, 0, 0, 0.66);
+    height: 100vh;
+  }
 }

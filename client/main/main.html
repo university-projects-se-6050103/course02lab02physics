@@ -1,23 +1,23 @@
 <template name="Main">
   <div class="row" id="body-wrapper">
-    <div class="col-md-10 text-center">
+    <div id="settings">
+      <div class="throw-controls">
+        <button class="btn btn-primary" id="throw"> </button>
+        <span class="throw-text">Запустити <br/> кульку</span>
+      </div>
+      <input type="text" id="v0" value="1"/>
+      <span class="white-translucent-text">м/с </span>
+    </div>
+    <div class="col-md-11 text-center">
       <div id="canvas">
         <div id="ball"></div>
       </div>
       <div id="ruler"></div>
       <span id="result">{{throwDistance}} см</span>
     </div>
-    <div class="col-md-2">
-      <div class="row">
-        <div class="col-md-3">
-          <input type="range" id="height-range-input" orient="vertical" min="0" max="100"/>
-          <span id="range-value">{{throwHeight}} см</span>
-        </div>
-        <div class="col-md-9">
-          <input type="text" id="v0" value="1"/> м/с <br/>
-          <button class="btn btn-primary" id="throw">Кинути</button>
-        </div>
-      </div>
+    <div class="col-md-1">
+      <input type="range" id="height-range-input" orient="vertical" min="0" max="100"/>
+      <span id="range-value">{{throwHeight}} см</span>
     </div>
   </div>
 </template>

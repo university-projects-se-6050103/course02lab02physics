@@ -1,9 +1,9 @@
 input[type=range][orient=vertical] {
-  writing-mode: vertical-lr; /* IE */
-  -webkit-appearance: slider-vertical; /* WebKit */
+  height: 500px; /* IE */
+  padding: 0 5px; /* WebKit */
   width: 8px;
-  height: 500px;
-  padding: 0 5px;
+  writing-mode: vertical-lr;
+  -webkit-appearance: slider-vertical;
 }
 
 #ruler {
@@ -14,10 +14,10 @@ input[type=range][orient=vertical] {
 
 #result {
   background: white;
-  padding: 5px 10px;
-  font-weight: bold;
   border: 2px solid red;
   border-radius: 5px;
+  font-weight: bold;
+  padding: 5px 10px;
 }
 
 #canvas {
@@ -41,8 +41,8 @@ input[type=range][orient=vertical] {
 }
 
 #v0 {
-  width: 30px;
   margin: 15px 0;
+  width: 30px;
 }
 
 body {
@@ -53,5 +53,49 @@ body {
   #body-wrapper {
     background: rgba(0, 0, 0, 0.66);
     height: 100vh;
+
+    #settings {
+      position: absolute;
+      padding: 50px;
+      z-index: 5;
+
+      .throw-controls {
+        float: left;
+      }
+
+      .white-translucent-text {
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        opacity: .6;
+      }
+
+      #v0 {
+        background: url("/counter.png");
+        color: white;
+        height: 80px;
+        width: 80px;
+        background-size: cover;
+        text-align: center;
+        font-size: 21px;
+        font-weight: bold;
+        border: none;
+      }
+
+      #throw {
+        background: url("/hand.png");
+        height: 66px;
+        width: 50px;
+        background-size: 50px 66px;
+      }
+
+      .throw-text {
+        display: block;
+        .white-translucent-text;
+        font-size: 14px;
+        text-align: center;
+        margin-right: 15px;
+      }
+    }
   }
 }

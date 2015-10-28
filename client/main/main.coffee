@@ -21,6 +21,9 @@ Template.Main.events
   'click #throw': (event, tmpl) ->
     tmpl.ballFlySound.play()
     tmpl.$(event.target).addClass 'pulsate'
+    randomTracerColor = randomColor
+      luminosity: 'bright'
+      format: 'rgb'
 
     ball = tmpl.$('#ball')
     ruler = tmpl.$('#ruler')
@@ -33,6 +36,9 @@ Template.Main.events
     ballFly = Meteor.setInterval ->
       ball.css('right', positionX += v0 * 2)
       ball.css('bottom', positionY -= Math.sqrt(step++))
+
+      ball.after($("<div class=\"trace-dot\" style=\"background: #{randomTracerColor}; right: #{positionX + 20}px; bottom: #{positionY + 15}px\"></div>"))
+
       if overlaps ball[0], ruler[0]
         tmpl.ballFlySound.pause()
         tmpl.ballOverlapSound.play()

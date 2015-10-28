@@ -20,6 +20,7 @@ Template.Main.events
     tmpl.v0.set parseFloat tmpl.$(event.target).val()
   'click #throw': (event, tmpl) ->
     tmpl.ballFlySound.play()
+    tmpl.$(event.target).addClass 'pulsate'
 
     ball = tmpl.$('#ball')
     ruler = tmpl.$('#ruler')

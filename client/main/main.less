@@ -99,3 +99,14 @@ body {
     }
   }
 }
+
+
+.pulsate {
+  -webkit-animation: pulsate 2s ease-out;
+  animation: pulsate 2s ease-out;
+}
+@-webkit-keyframes pulsate {
+  0% {-webkit-transform: scale(1.1, 1.1);}
+  50% {-webkit-transform: scale(1.5, 1.5);}
+  100% {-webkit-transform: scale(1.05, 1.05);}
+}

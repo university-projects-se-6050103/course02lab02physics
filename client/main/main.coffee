@@ -39,4 +39,5 @@ Template.Main.events
         tmpl.ballFlySound = new Audio('ball-fly-sound.ogg')
         Meteor.clearInterval ballFly
         tmpl.throwDistance.set s
+        tmpl.$(event.target).removeClass 'pulsate'
     , 30

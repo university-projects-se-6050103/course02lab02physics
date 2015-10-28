@@ -12,7 +12,8 @@ Template.Main.helpers
 Template.Main.events
   'change #height-range-input': (event, tmpl) ->
     tmpl.throwHeight.set (tmpl.$(event.target).val() * 5 - 25)
-    tmpl.$('#ball').css 'bottom', tmpl.throwHeight.get() + 'px'
+    tmpl.$('#ball').css('bottom', tmpl.throwHeight.get() + 'px').css('right', 0)
+    tmpl.throwDistance.set 0
   'change #v0': (event, tmpl) ->
     tmpl.v0.set parseFloat tmpl.$(event.target).val()
   'click #throw': (event, tmpl) ->
@@ -22,7 +23,7 @@ Template.Main.events
     positionY = tmpl.throwHeight.get()
     v0 = tmpl.v0.get()
     h = tmpl.throwHeight.get()
-    s = (v0 * Math.sqrt((2 * (h * 0.01) / 9.8)) / 18) * 0.01
+    s = (v0 * Math.sqrt((2 * (h / 0.01) / 9.8)))
     step = 0
     ballFly = Meteor.setInterval ->
       ball.css('right', positionX += v0 * 2)
@@ -30,4 +31,4 @@ Template.Main.events
       if overlaps ball[0], ruler[0]
         Meteor.clearInterval ballFly
         tmpl.throwDistance.set s
-    , 1
+    , 30

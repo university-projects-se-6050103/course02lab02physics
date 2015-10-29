@@ -2,7 +2,7 @@
   <div class="row" id="body-wrapper">
     <div id="settings">
       <div class="throw-controls">
-        <button class="btn btn-primary" id="throw"> </button>
+        <button class="btn btn-primary" id="throw"></button>
         <span class="throw-text">Запустити <br/> кульку</span>
       </div>
       <input type="text" id="v0" value="1"/>
@@ -18,7 +18,10 @@
     </div>
     <div class="col-md-1">
       <input type="range" id="height-range-input" orient="vertical" min="0" max="100"/>
-      <span id="range-value">{{throwHeight}} см</span>
+      <div class="height-span">
+        <span id="range-value">{{throwHeight}} см</span>
+      </div>
+      <div class="throw-text">висота запуску</div>
     </div>
   </div>
 </template>

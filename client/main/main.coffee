@@ -14,7 +14,7 @@ Template.Main.helpers
 Template.Main.events
   'change #height-range-input': (event, tmpl) ->
     tmpl.throwHeight.set (tmpl.$(event.target).val() * 5 - 25)
-    tmpl.$('#ball').css('bottom', tmpl.throwHeight.get() + 'px').css('right', 0)
+    tmpl.$('#ball').css('bottom', (tmpl.throwHeight.get() + 50) + 'px').css('right', 0)
     tmpl.throwDistance.set 0
   'change #v0': (event, tmpl) ->
     tmpl.v0.set parseFloat tmpl.$(event.target).val()
@@ -28,7 +28,7 @@ Template.Main.events
     ball = tmpl.$('#ball')
     ruler = tmpl.$('#ruler')
     positionX = 0
-    positionY = tmpl.throwHeight.get()
+    positionY = tmpl.throwHeight.get() + 50
     v0 = tmpl.v0.get()
     h = tmpl.throwHeight.get()
     s = (v0 * Math.sqrt((2 * (h / 0.01) / 9.8)))
